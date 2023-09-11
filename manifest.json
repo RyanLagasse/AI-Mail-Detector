@@ -1,0 +1,21 @@
+{
+  "name": "AI Email Detector",
+  "version": "1.2",
+  "description": "Want to see which emails AI wrote? Look no further!",
+  "manifest_version": 3,  
+  "author": "Ryan Lagasse",
+  "icons": {
+    "128": "icon3.png"
+  },
+  "action": {
+    "default_popup": "index.html",
+    "default_title": "AI Email Detector"
+  },
+    "permissions": [
+      "tabs",
+      "activeTab",
+      "scripting",
+      "input",
+      "storage"
+    ]
+}
