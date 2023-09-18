@@ -64,17 +64,34 @@
   </ul>
   
   <script>
-  function search() {
-    var input = document.getElementById("searchbar").value;
-    var list = document.getElementById("results");
-    var item = document.createElement("li");
-    item.textContent = input;
-    list.appendChild(item);
-    document.getElementById("searchbar").value = ""; 
-  }
+const fs = require('fs');
+const { exec } = require('child_process');
+
+function search() {
+  var input = document.getElementById("searchbar").value;
+  var list = document.getElementById("results");
+  var item = document.createElement("li");
+  item.textContent = input;
+  list.appendChild(item);
+  document.getElementById("searchbar").value = "";
+
+  // Write input to file
+  fs.writeFile('input.txt', input, (err) => {
+    if (err) throw err;
+    console.log('Input saved to file');
+  });
+
+  // Execute Test.js file using Node.js
+  exec('node Test.js', (err, stdout, stderr) => {
+    if (err) {
+      console.error(err);
+      return;
+    }
+    console.log(stdout);
+  });
+}
   </script>
 
-  <script src="Test.js"></script>
 </body>
 </html>
 
